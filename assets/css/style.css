@@ -1,0 +1,83 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #5c6670;
+  --line: #e3e7eb;
+  --card: #f6f8fa;
+  --accent: #1a5fb4;
+  --accent-soft: #e8f0fb;
+  --badge: #eef1f4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14181d; --fg: #e6e9ec; --muted: #9aa4ad; --line: #2a3138;
+    --card: #1b2127; --accent: #7db3f5; --accent-soft: #1d2a3a; --badge: #262d34;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topbar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; gap: 16px; height: 52px; }
+.brand { font-weight: 600; color: var(--fg); white-space: nowrap; }
+nav { display: flex; gap: 16px; margin-left: auto; overflow-x: auto; white-space: nowrap; font-size: 14px; }
+nav a { color: var(--muted); }
+nav a:hover { color: var(--fg); text-decoration: none; }
+.lang { border: 1px solid var(--line); background: transparent; color: var(--fg); border-radius: 6px; padding: 3px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+.lang:hover { background: var(--card); }
+
+.hero { display: flex; gap: 28px; align-items: flex-start; padding: 44px 0 20px; }
+.avatar { width: 132px; height: 158px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); flex: none; }
+h1 { margin: 0; font-size: 32px; line-height: 1.2; }
+h1 small { font-size: 18px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+.sub { margin: 6px 0 0; font-size: 18px; }
+.aff { margin: 2px 0 14px; color: var(--muted); }
+.intro { margin: 0 0 14px; }
+.links { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.links a { border: 1px solid var(--line); border-radius: 999px; padding: 3px 14px; font-size: 14px; color: var(--fg); }
+.links a:hover { background: var(--accent-soft); border-color: var(--accent); text-decoration: none; }
+
+section { padding: 22px 0 6px; }
+h2 { font-size: 22px; margin: 0 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.note { color: var(--muted); font-size: 14px; margin: -4px 0 10px; }
+
+.cards { display: grid; gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.card h3 { margin: 0 0 2px; font-size: 16.5px; }
+.card .meta { color: var(--muted); font-size: 13.5px; margin-bottom: 4px; }
+.card p { margin: 0; font-size: 15px; }
+
+.pubs { margin: 0; padding-left: 0; list-style: none; counter-reset: p; }
+.pubs li { position: relative; padding: 0 0 12px 34px; font-size: 15px; }
+.pubs li::before { counter-increment: p; content: counter(p); position: absolute; left: 0; top: 0; width: 26px; text-align: right; color: var(--muted); font-size: 13px; }
+.pubs .t { font-weight: 600; }
+.pubs .v { color: var(--muted); }
+.badge { display: inline-block; font-size: 12px; padding: 0 8px; border-radius: 999px; background: var(--badge); color: var(--muted); margin-right: 6px; vertical-align: 1px; }
+.badge.live { background: var(--accent-soft); color: var(--accent); }
+
+.plain { margin: 0; padding: 0; list-style: none; }
+.plain li { padding: 3px 0; font-size: 15px; }
+
+.timeline { margin: 0; padding: 0; list-style: none; }
+.timeline li { display: grid; grid-template-columns: 130px 1fr; gap: 12px; padding: 6px 0; }
+.timeline .d { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.timeline .s { font-weight: 600; }
+.timeline .x { color: var(--muted); font-size: 14.5px; }
+
+.foot { padding: 28px 20px 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); margin-top: 24px; }
+
+@media (max-width: 640px) {
+  .hero { flex-direction: column; gap: 16px; padding-top: 28px; }
+  h1 { font-size: 27px; }
+  .timeline li { grid-template-columns: 1fr; gap: 0; }
+  nav { display: none; }
+  .lang { margin-left: auto; }
+}
